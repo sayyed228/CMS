@@ -1,0 +1,250 @@
+.bodytext{
+	font-family:Verdana;
+	color:#0000CC;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+	cursor: text;
+	font-style: normal;
+}
+.boldtext{
+	font-family: Verdana;
+	color:#104499;
+	font-weight:normal;
+	font-size:15px;
+	font-style: italic;
+}
+.blueborder {
+	color: #000000;
+	border: 1px solid #000000;
+}
+.front {
+	font-family: Calibri;
+	color:#336699;
+	font-weight:normal;
+	font-size:14px;
+	line-height: normal;
+	font-style: italic;
+}
+.arrow {
+
+	font-family: Tahoma;
+	color:#336699;
+	font-weight:bold;
+	font-size:13px;
+	line-height: 13px;
+}
+.newsfont {
+	font-family: Tahoma;
+	color:#333333;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 12px;
+	padding-top: 0px;
+	padding-left: 5px;
+}
+.insidetext {
+
+	font-family:Verdana;
+	color:#000000;
+	font-weight: normal;
+	font-size:14px;
+	line-height: 25px;
+}
+.logintextbox {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 25px;
+	width: 190px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-image: url(images/log_box_bg.png);
+	background-repeat: no-repeat;
+}
+.registerbox {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 25px;
+	width: 200px;
+}
+.password {
+
+	font-family: Verdana;
+	color:#666666;
+	font-weight:normal;
+	font-size:10px;
+	font-style: normal;
+}
+.menu {
+	font-family:Verdana;
+	color:#000000;
+	font-weight: normal;
+	font-size:16px;
+	line-height: 20px;
+}
+.body {
+
+	font-family:Verdana;
+	color:#000000;
+	font-weight: normal;
+	font-size:11px;
+	line-height: 20px;
+}
+.text {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: normal;
+}
+.footerfont {
+
+
+	font-family: Tahoma;
+	color:#666666;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 17px;
+}
+.query {
+
+
+
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 15px;
+	height: 25px;
+	width: 170px;
+}
+.menuCopy {
+
+	font-family:Verdana;
+	color:#000066;
+	font-weight: bold;
+	font-size:16px;
+	line-height: 20px;
+}
+.registertextarea {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 100%;
+	width: 200px;
+}
+.lonftextfield {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 25px;
+	width: 150px;
+}
+.newstextarea {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 100px;
+	width: 400px;
+}
+.news {
+	font-family: Tahoma;
+	color:#990000;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 17px;
+}
+.white_1 {
+
+	font-family:Verdana;
+	color:#FFFFFF;
+	font-weight: 100;
+	font-size:12px;
+	line-height: 20px;
+}
+.POINT {
+
+
+	font-family:Verdana;
+	color:#336699;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+}
+.loginbox {
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:12px;
+	height: 22px;
+	width: 165px;
+	border: 1px solid #43697E;
+}
+.news {
+
+	font-family:Verdana;
+	color:#FFFFFF;
+	font-weight: normal;
+	font-size:12px;
+	line-height: 20px;
+}
+.TIME {
+
+
+
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:40;
+	font-size:11px;
+	line-height: 8px;
+	height: 20px;
+	width: 50px;
+}
+.feature {
+
+
+	font-family:Verdana;
+	color:#FFFFFF;
+	font-weight: 100;
+	font-size:11px;
+	line-height: 18px;
+}
+.bodytextCopy {
+
+	font-family:Verdana;
+	color:#000000;
+	font-weight: normal;
+	font-size:12px;
+	line-height: 25px;
+}
+.lonftextarea {
+
+	font-family: Tahoma;
+	color:#0066CC;
+	font-weight:normal;
+	font-size:11px;
+	line-height: 13px;
+	height: 25px;
+	width: 150px;
+}
+.menuwhite {
+
+
+	font-family:Verdana;
+	color:#FFFFFF;
+	font-weight: bold;
+	font-size:16px;
+	line-height: 20px;
+}
