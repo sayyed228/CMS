@@ -19,10 +19,10 @@ if(!$connect)
 die('Could not connect' . mysql_error);	
 }
 
-mysql_select_db('test',$connect);
+mysql_select_db('sk_legal',$connect);
 
 
-$sql = "UPDATE `test`.`banks_and_financial_institutions` SET `Banks and Financial Institutions` = '".$Banks_and_Financial_Institutions."' WHERE `banks_and_financial_institutions`.`id` = '".$id."';";
+$sql = "UPDATE `sk_legal`.`banks_and_financial_institutions` SET `Name` = '".$Banks_and_Financial_Institutions."' WHERE `banks_and_financial_institutions`.`id` = '".$id."'";
 mysql_query($sql) or die('Error updating database');
 
 

@@ -6,7 +6,7 @@ if(!$connect)
 die('Could not connect!' . mysql_error);
 }
 
-mysql_select_db('test', $connect);
+mysql_select_db('sk_legal', $connect);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -468,11 +468,11 @@ She has also handled documentation related to purchase of land projects in other
      
       
       <?php 
-         $sql = ("SELECT * FROM `Banks_and_Financial_Institutions`");
+         $sql = ("SELECT id, Name FROM banks_and_financial_institutions ORDER BY listorder ASC");
          $result = mysql_query($sql);
 			while($row = mysql_fetch_array($result))
 			{
- 			 echo('<div class=" col-sm-4"><p>'.$row['Banks and Financial Institutions'].'</p></div>');
+ 			 echo('<div class=" col-sm-4"><p>'.$row['Name'].'</p></div>');
 			}
          ?>
       </div>

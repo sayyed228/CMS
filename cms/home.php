@@ -1,98 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<meta content="IE=edge" http-equiv="X-UA-Compatible" />
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<title>Page structure</title>
-<meta content="" name="description" />
-<meta content="" name="keywords" />
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="style.css" rel="stylesheet" />
-<!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<style type="text/css">
+<?php
+session_start();
+include_once 'dbconnect.php';
+
+if(!isset($_SESSION['user']))
 {
- -webkit-backface-visibility: hidden;
+	header("Location: index.php");
 }
+$res=mysql_query("SELECT * FROM users WHERE user_id=".$_SESSION['user']);
+$userRow=mysql_fetch_array($res);
+?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Welcome - <?php echo $userRow['email']; ?></title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<style>
+ul {
+	padding:0px;
+	margin: 0px;
+}
+#response {
+	padding:10px;
+	background-color:#9F9;
+	border:2px solid #396;
+	margin-bottom:20px;
+}
+#list li {
+	margin: 0 0 3px;
+	padding:14px 8px;
+	background-color:#fff;
+	border:#ccc solid 1px;
+	color:#333;
+	list-style: none;
+}
+.pointer { cursor:move;}
+.marginTop_6{margin-top:-6px;}
+.marginLeft{margin-left:10px;}
 </style>
 <script type="text/javascript">
+$(document).ready(function(){ 	
+	  function slideout(){
+  setTimeout(function(){
+  $("#response").slideUp("slow", function () {
+      });
+    
+}, 2000);}
+	
+    $("#response").hide();
+	$(function() {
+	$("#list ul").sortable({ opacity: 0.8, cursor: 'move', update: function() {
+			
+			var order = $(this).sortable("serialize") + '&update=update'; 
+			$.post("updateList.php", order, function(theResponse){
+				$("#response").html(theResponse);
+				$("#response").slideDown('slow');
+				slideout();
+			}); 															 
+		}								  
+		});
+	});
 
-
+});	
 </script>
 </head>
 <body>
+<?php  require_once('navbar.php');?>
+<!-- -->
+<div id="container" class="container">
+<h2>Banks and Financial Institutions</h2>
+
+ <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#AddPopUp" style="margin-bottom:15px;">Add New</button>
+ hi' <?php echo $userRow['username']; ?>&nbsp;<a href="logout.php?logout">Sign Out</a>
+ <div class="clearfix"></div>
+  <div id="list">
+
+    <div id="response"> </div>
+    <ul>
+      <?php
+                include("dbconnect.php");
+				$query  = "SELECT id, Name FROM banks_and_financial_institutions ORDER BY listorder ASC";
+				$result = mysql_query($query);
+				while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+				{
+					
+				$id = stripslashes($row['id']);
+				$text = stripslashes($row['Name']);
+				
+				?>
+                
+                
+              
+                
+      <li id="arrayorder_<?php echo $id ?>">
+	  
+	     <i class="fa fa-arrows pointer"></i>&nbsp; <span class="Banks_and_Financial_Institutions"><?php echo $text; ?></span> 
+         <input  class="btn btn-primary updateConfirmation pull-right marginTop_6 marginLeft" data-toggle="modal" data-target="#Update" type="button" id="<?php echo $id ?>" value="Update <?php echo $id ?>"/>         &nbsp;&nbsp;
+		<input  class="btn btn-danger deleteConfirmation pull-right marginTop_6" data-toggle="modal" data-target="#Delete" type="button" id="<?php echo $id ?>" value="Delete <?php echo $id ?>"/>
+        <div class="clear"></div>
+      </li>
+      <?php } ?>
+    </ul>
+  </div>
+</div>
+
+
+<!--  
+
 
 <!-- Button trigger modal -->
 
-<div class="container-fluid">
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="navbar-brand" href="#">Project name</a> </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#" data-toggle="collapse" data-target=".navbar-collapse">Home</a></li>
-          <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse">OUR PARTNERS</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddPopUp" style="margin-bottom:15px;">Add New</button>
-       <div class="clearfix"></div>
-	  <div class="panel panel-default">
-     
-          <div class="panel-heading">
-           Banks and Financial Institutions
-           
-         </div>
-          <div class="panel-body">
-            
-            <?php
-		$connect = mysql_connect('localhost','root','');
-		
-		if(!$connect)
-		{
-		die('Could not connect!' . mysql_error);
-		}
-		
-		mysql_select_db('sk_legal', $connect);
-		?>
-      <?php
-		$sql = ("SELECT * FROM banks_and_financial_institutions");
-		
-		$result = mysql_query($sql);
-		
-		echo('<table class="table" id="Banks_and_Financial_Institutions_table"> ');
-		while($row = mysql_fetch_array($result))
-		{
-		echo('<tr>');
-		//echo('<td><input class="form-control Banks_and_Financial_Institutions" type="text" value="'.$row['Banks and Financial Institutions'].'" /></td>');
-		echo('<td>'."asdf".'</td>');
-		echo('<td class="Banks_and_Financial_Institutions">'.$row['Name'].'</td>');
-		echo('<td class="text-right">
-		<input  class="btn btn-primary updateConfirmation" data-toggle="modal" data-target="#Update" type="button" id="'.$row['id'].'" value="Update"/>         &nbsp;&nbsp;
-		<input  class="btn btn-danger deleteConfirmation" data-toggle="modal" data-target="#Delete" type="button" id="'.$row['id'].'" value="Delete"/></td>');
-		echo('</tr>');
-		}
-		echo('</table>');
-		?>
-            
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- --> 
 
@@ -150,7 +178,8 @@
         <h4 class="modal-title" id="myModalLabel">Add Banks and Financial Institutions</h4>
       </div>
       <div class="modal-body">
-        <input type="text" value="asdfasdfasdf" class="form-control" id="Add" placeholder="Add Banks and Financial Institutions"/>
+        <input type="text" value="" class="form-control" id="Add" placeholder="Add Banks and Financial Institutions"/>
+         <input type="text" value="" class="form-control" id="listorder" placeholder=""/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -159,10 +188,12 @@
     </div>
   </div>
 </div>
-<script type="text/javascript"  src="js/jquery.min.js"></script> 
-<script type="text/javascript"  src="js/bootstrap.min.js"></script> 
-<script type="text/javascript"  src="js/custom.js"></script> 
 
+  <?php $highest_listorder = mysql_result(mysql_query("SELECT MAX(listorder)FROM banks_and_financial_institutions"), 0); 
+                 
+           
+				 echo('<input type="hidden" id="highest_listorder" value="'.$highest_listorder.'"/>')  
+				 ?>
 <!-- --> 
 <script type="text/javascript"  src="jquery.min.js"></script> 
 <script>
@@ -238,9 +269,15 @@ $(document).ready(function (e) {
         }
 
         var Add = document.getElementById('Add').value
-       // alert(Add)
+		var highest_listorder = document.getElementById('highest_listorder').value;
+		var plusOne  = 1 ;
+		var highest_listorder_plus = (+highest_listorder + +plusOne);
+ 		
+        
 		
-        aa.open("GET", "Banks-and-Financial-Institutions-add.php?Add=" + Add, true)
+		var listorder = document.getElementById('listorder').value= highest_listorder_plus
+		alert(listorder)
+        aa.open("GET", "Banks-and-Financial-Institutions-add.php?Add=" + Add + "&listorder=" + listorder, true)
         aa.send()
 		 setTimeout(function(){
   	  location.reload();
@@ -254,7 +291,7 @@ $(document).ready(function (e) {
 
     $('.updateConfirmation , .deleteConfirmation').click(function () {
         var id = $(this).attr('id')
-        var Banks_and_Financial_Institutions = $(this).closest('tr').find('.Banks_and_Financial_Institutions').text()
+        var Banks_and_Financial_Institutions = $(this).prevAll('span').text();
         $('#id').val(id)
         $('#Banks_and_Financial_Institutions').val(Banks_and_Financial_Institutions)
         $('#id_delete').val(id)
@@ -277,6 +314,8 @@ $(document).ready(function (e) {
         Add_Banks_and_Financial_Institutions();
 
     });
+	
+	
 
 
   var tables = $('#Banks_and_Financial_Institutions_table') 
@@ -292,7 +331,8 @@ $(document).ready(function (e) {
 });
 </script>
 
-
-
+<!-- -->
 </body>
 </html>
+
+
